@@ -28,6 +28,12 @@ gem 'bootstrap-sass', '3.3.3'
 gem 'devise', '3.4.1'
 
 gem 'font-awesome-rails' #mas iconos
+
+#Omniauth
+gem 'omniauth', '1.2.2'
+# middelware Facebook
+gem 'omniauth-facebook', '2.0.0'
+
 #Fin gemas de terceros
 
 # bundle exec rake doc:rails generates the API under doc/api.
