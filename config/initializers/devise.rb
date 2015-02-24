@@ -18,7 +18,7 @@ Devise.setup do |config|
   config.mailer_sender = 'please-change-me-at-config-initializers-devise@example.com'
 
   #Configuracion Omniauth-facebook
-  config.omniauth :facebook, "App ID", "App Secret"
+  config.omniauth :facebook, '765119850231986', '302a942c8899c625ca0fce630ff5ca58'
 
   #Fin configuracion facebook
 
