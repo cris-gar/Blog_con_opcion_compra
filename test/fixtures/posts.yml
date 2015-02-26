@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  titulo: MyString
+  contenido: MyText
+  extension: MyString
+  usuario_id: 
+
+two:
+  titulo: MyString
+  contenido: MyText
+  extension: MyString
+  usuario_id: 
+
+primer_articulo:
+  titulo: Mi primer articulo
+  contenido: Este es un contenido para el test
+  extension: jpg
+  usuario_id:

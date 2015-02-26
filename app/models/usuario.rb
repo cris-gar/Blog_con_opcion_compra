@@ -12,6 +12,9 @@ class Usuario < ActiveRecord::Base
       usuario.uid = auth.uid
       usuario.email = auth.info.email
       usuario.password = Devise.friendly_token[0,20]
+      usuario.nombre = auth.info.first_name
+      usuario.apellido = auth.info.last_name
+      usuario.username = auth.info.nickname
     end
   end
 end
