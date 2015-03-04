@@ -6,7 +6,14 @@ class Usuario < ActiveRecord::Base
          :omniauthable, :omniauth_providers => [:facebook]
 
   has_many :posts
-  
+  has_many :friendships
+
+  has_many :follows, through: :friendships, source: :usuario
+
+  has_many :followers_friendships, class_name: 'Friendship', foreign_key: "usuario_id"
+
+  has_many :followers, through: :followers_friendships, source: friend
+
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |usuario|
       usuario.provider = auth.provider
