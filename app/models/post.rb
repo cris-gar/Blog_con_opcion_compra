@@ -4,4 +4,6 @@ class Post < ActiveRecord::Base
   validates :titulo, presence: true, uniqueness: true
 
   include Picturable
+  include PublicActivity::Model
+  tracked owner: Proc.new { |controller,model| controller.current_usuario }
 end

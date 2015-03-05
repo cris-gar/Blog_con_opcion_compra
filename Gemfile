@@ -34,6 +34,8 @@ gem 'omniauth', '1.2.2'
 # middelware Facebook
 gem 'omniauth-facebook', '2.0.0'
 
+#Notificaciones para relaciones poliformicas manejo de feed
+gem 'public_activity', '1.4.2'
 #Fin gemas de terceros
 
 # bundle exec rake doc:rails generates the API under doc/api.

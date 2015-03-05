@@ -17,6 +17,16 @@
         </div>
 
         <div class="field form-group">
+          <%= f.label :nombre %><br />
+          <%= f.text_field :nombre, autofocus: false, class: "form-control" %>
+        </div>
+
+        <div class="field form-group">
+          <%= f.label :apellido %><br />
+          <%= f.text_field :apellido, autofocus: false, class: "form-control" %>
+        </div>
+
+        <div class="field form-group">
           <%= f.label :password %>
           <% if @validatable %>
               <em>(<%= @minimum_password_length %> characters minimum)</em>

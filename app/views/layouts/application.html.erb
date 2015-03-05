@@ -9,42 +9,45 @@
 <body>
 
 
-    <header>
-      <nav>
-        <ul class="nav nav-tabs">
+<header>
+  <nav>
+    <ul class="nav nav-tabs">
+      <li>
+        <%= link_to "Inicio", root_path %>
+      </li>
+      <li>
+        <%= link_to "Posts", posts_path %>
+      </li>
+      <% if usuario_signed_in? %>
           <li>
-            <%= link_to "Inicio", root_path %>
+            <%= link_to "Editar_Perfil", edit_usuario_registration_path(current_usuario) %>
           </li>
           <li>
-            <%= link_to "Posts", posts_path %>
+            <%= link_to "Cerrar Sesion", destroy_usuario_session_path, method: :delete%>
           </li>
-          <% if usuario_signed_in? %>
-            <li>
-              <%= link_to "Editar_Perfil", edit_usuario_registration_path(current_usuario) %>
-            </li>
-            <li>
-              <%= link_to "Cerrar Sesion", destroy_usuario_session_path, method: :delete%>
-            </li>
-          <% else %>
-              <li>
-                <%=  link_to "Ingresar", new_usuario_session_path %>
-              </li>
-              <li>
-                <%= link_to "Registrarse", new_usuario_registration_path %>
-              </li>
+          <li>
+            <%= link_to "Mi Perfil", current_usuario %>
+          </li>
+      <% else %>
+          <li>
+            <%=  link_to "Ingresar", new_usuario_session_path %>
+          </li>
+          <li>
+            <%= link_to "Registrarse", new_usuario_registration_path %>
+          </li>
 
-          <% end %>
+      <% end %>
 
-        </ul>
+    </ul>
 
-      </nav>
+  </nav>
 
-    </header>
+</header>
 
-    <p class="notice" style="<%= "display:none;" if notice.nil? %>"><%= notice %></p>
-    <p class="alert" style="<%= "display:none;" if alert.nil? %>"><%= alert %></p>
+<p class="notice" style="<%= "display:none;" if notice.nil? %>"><%= notice %></p>
+<p class="alert" style="<%= "display:none;" if alert.nil? %>"><%= alert %></p>
 
-    <%= yield %>
+<%= yield %>
 
 </body>
 </html>

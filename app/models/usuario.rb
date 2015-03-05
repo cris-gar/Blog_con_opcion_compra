@@ -6,13 +6,21 @@ class Usuario < ActiveRecord::Base
          :omniauthable, :omniauth_providers => [:facebook]
 
   has_many :posts
-  has_many :friendships
+  has_many :friendships, foreign_key: "usuario_id", dependent: :destroy
 
-  has_many :follows, through: :friendships, source: :usuario
+  has_many :follows, through: :friendships, source: :friend
 
-  has_many :followers_friendships, class_name: 'Friendship', foreign_key: "usuario_id"
+  has_many :followers_friendships, class_name: "Friendship", foreign_key: "friend_id"
 
-  has_many :followers, through: :followers_friendships, source: friend
+  has_many :followers, through: :followers_friendships, source: :usuario
+
+  def follows!(amigo_id)
+    self.friendships.create!(friend_id: amigo_id)
+  end
+
+  def can_follow?(amigo_id)
+    not amigo_id == self.id or friendships.where(friend_id: amigo_id).size > 0
+  end
 
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |usuario|
